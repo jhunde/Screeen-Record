@@ -5,7 +5,9 @@ import time
 import os
 
 output_dir = "./Screen Record"
-os.makedirs(output_dir, exist_ok=True)
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
 
 try:
     with mss.mss() as sct:
@@ -41,6 +43,5 @@ try:
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
 finally:
-    if "output" in locals():
-        output.release()
+    output.release()
     cv2.destroyAllWindows()

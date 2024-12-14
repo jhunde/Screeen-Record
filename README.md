@@ -3,6 +3,66 @@ I don't want to keep using zoom to screen record so this project is my solution 
 
 Let's get started! 
 
+## Required Programs and Libraries 
+To this process a lot easier I've saved them in `requirements.txt`
+What you need to do to install the libraries needed for this project, in the terminal run `pip install -r requirement.txt`.
+
+The following are the the libraries added to `requirement.txt`:
+```txt
+mss==10.0.0
+numpy==2.2.0
+opencv-python==4.10.0.84
+
+```
+
+## Create a Directory 
+> **Note:** This directory will be used to save the screen recording video as `.mp4` file
+
+```py
+output_dir = "./Screen Record"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+```
+
+## Screen Recording Program 
+```py
+try:
+    with mss.mss() as sct:
+        monitor = {"top": 0, "left": 0, "width": 1920, "height": 1080}
+        codec = cv2.VideoWriter_fourcc(*"MP4V")
+        file_name = os.path.join(output_dir, "screen_record.mp4")
+        fps = 30
+        screen_resolution = (monitor["width"], monitor["height"])
+
+        output = cv2.VideoWriter(file_name, codec, fps, screen_resolution)
+
+        frame_interval = 1 / fps  # Target time between frames
+        last_frame_time = time.time()
+
+        while True:
+            current_time = time.time()
+            if current_time - last_frame_time >= frame_interval:
+                last_frame_time += frame_interval
+
+                # Capture screen and process frame
+                img = np.array(sct.grab(monitor))
+                img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+                output.write(img)
+
+                # Display frame
+                cv2.imshow("Screen Record", img)
+
+                # Check if the window is still open
+                if cv2.getWindowProperty("Screen Record", cv2.WND_PROP_VISIBLE) < 1:
+                    break
+
+            # Allow OpenCV to process GUI events
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
+finally:
+    output.release()
+    cv2.destroyAllWindows()
+```
 
 ### To Do Lists
 + [x] Create `requirements.txt`
