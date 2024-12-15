@@ -7,13 +7,18 @@ Let's get started!
 To this process a lot easier I've saved them in `requirements.txt`
 What you need to do to install the libraries needed for this project, in the terminal run `pip install -r requirement.txt`.
 
-The following are the the libraries added to `requirement.txt`:
-```txt
-mss==10.0.0
-numpy==2.2.0
-opencv-python==4.10.0.84
+However, before running `pip install -r requirements.txt` in your terminal you must:
+1. Clone the repo 
+2. Create a virtual environment in your terminal 
+   + `python -m venv .venv` 
+3. Activate you virtual environment
+   + **Windows:** `.\.venv\Scripts\activate`
+   + **macOS/Linux:** `source .venv/bin/activate`
+     + Once it's activated, your terminal should look similar to the following:
+       + `(.venv) C:\path\to\project>`
+4. You can now finally run `pip install -r requirements.txt` 
 
-```
+Your're now good to go! 🎉
 
 ## Create a Directory 
 > **Note:** This directory will be used to save the screen recording video as `.mp4` file
@@ -67,7 +72,7 @@ finally:
 ### To Do Lists
 + [x] Create `requirements.txt`
 + [x] Create a virtual environment (`venv`)
-+ [ ] Complete README
++ [x] Complete README
 #### Troublshoot
 + [ ] Having issues delaying the video to real-time speed
 + [ ] Give users the ablity to resize the `cv2.imshow()` visualization too
