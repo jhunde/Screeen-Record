@@ -4,14 +4,14 @@ I don't want to keep using zoom to screen record so this project is my solution 
 Let's get started! 
 
 ## Required Programs and Libraries 
-To this process a lot easier I've saved them in `requirements.txt`
-What you need to do to install the libraries needed for this project, in the terminal run `pip install -r requirement.txt`.
+To make this process a lot easier, I've saved them in `requirements.txt`.
+What you need to do is to install the libraries needed for this project. In addition, in the terminal run `pip install -r requirement.txt`.
 
 However, before running `pip install -r requirements.txt` in your terminal you must:
 1. Clone the repo 
-2. Create a virtual environment in your terminal 
+2. Create a your own virtual environment in the terminal
    + `python -m venv .venv` 
-3. Activate you virtual environment
+3. Activate your virtual environment
    + **Windows:** `.\.venv\Scripts\activate`
    + **macOS/Linux:** `source .venv/bin/activate`
      + Once it's activated, your terminal should look similar to the following:
